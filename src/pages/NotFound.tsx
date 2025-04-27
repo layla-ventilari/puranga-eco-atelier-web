@@ -1,25 +1,30 @@
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+
+import { Link } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const NotFound = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    console.error(
-      "404 Error: User attempted to access non-existent route:",
-      location.pathname
-    );
-  }, [location.pathname]);
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">404</h1>
-        <p className="text-xl text-gray-600 mb-4">Oops! Page not found</p>
-        <a href="/" className="text-blue-500 hover:text-blue-700 underline">
-          Return to Home
-        </a>
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <div className="flex-1 flex items-center justify-center py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="font-serif text-6xl md:text-8xl font-bold text-verde-floresta mb-6">404</h1>
+          <h2 className="text-2xl md:text-3xl font-serif mb-8">Página não encontrada</h2>
+          <p className="text-muted-foreground mb-12 max-w-lg mx-auto">
+            A página que você está procurando parece não existir ou foi movida.
+          </p>
+          <Link 
+            to="/" 
+            className="inline-flex items-center px-6 py-3 bg-dourado text-fossil hover:bg-dourado/90 transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Voltar à Página Inicial
+          </Link>
+        </div>
       </div>
+      <Footer />
     </div>
   );
 };
